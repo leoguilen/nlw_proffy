@@ -8,19 +8,19 @@ class App {
     public express: express.Application;
 
     public constructor() {
-        this.express = express();
-        this.Middleware();
-        this.Routes();
+      this.express = express();
+      this.Middleware();
+      this.Routes();
     } 
 
     private Middleware(): void {
-        this.express.use(express.json());
-        this.express.use(cors());
-        this.express.use(morgan('tiny'));
+      this.express.use(express.json());
+      this.express.use(cors());
+      this.express.use(morgan('tiny'));
     } 
 
     private Routes(): void {
-        this.express.use('/api/v1', routes);
+      this.express.use('/api/v1', routes);
     }
 }
 
