@@ -9,7 +9,7 @@ interface ScheduleItem {
 }
 
 export default class ClassesController {
-    async index(request: Request, response: Response) {
+    async index(request: Request, response: Response): Promise<Response> {
         const filters = request.query;
 
         const subject = String(filters.subject);
@@ -40,7 +40,7 @@ export default class ClassesController {
         return response.json(classes);
     }
 
-    async create(request: Request, response: Response) {
+    async create(request: Request, response: Response): Promise<Response> {
         const {
             name,
             avatar,
@@ -64,9 +64,9 @@ export default class ClassesController {
             const user_id = insertedUsersIds[0];
         
             const insertedClassesIds = await trx('classes').insert({
-               subject,
-               cost,
-               user_id, 
+                subject,
+                cost,
+                user_id, 
             });
         
             const class_id = insertedClassesIds[0];
