@@ -9,7 +9,7 @@
     "lint:fix": "eslint src/ --fix",
     "knex:migrate": "knex --knexfile knexfile.ts migrate:latest",
     "knex:down": "knex --knexfile knexfile.ts migrate:down",
-    "test": "jest"
+    "test": "jest --detectOpenHandles"
   },
   "keywords": [],
   "author": "Leonardo Guilen",
@@ -24,6 +24,7 @@
     "@typescript-eslint/parser": "^3.8.0",
     "eslint": "^7.6.0",
     "jest": "^26.2.2",
+    "ts-jest": "^26.1.4",
     "ts-node-dev": "^1.0.0-pre.56",
     "typescript": "^3.9.7"
   },

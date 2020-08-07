@@ -10,7 +10,7 @@ const classesController = new ClassesController();
 const connectionsController = new ConnectionsController();
 
 routes.post('/users', (request: Request, response: Response) => {
-    return createUserController.handle(request, response);
+  return createUserController.handle(request, response);
 });
 
 routes.get('/classes', classesController.index);
