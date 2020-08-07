@@ -4,13 +4,19 @@ import db from '../../database/connection';
 
 export class SqliteUserRepository implements IUserRepository {
   async findAll(): Promise<User[]> {
-    const trx = await db.transaction();
-    
     try {
-      const users = await trx('users').select('*');
+      const users = await db('users').select('*');
       return users;
     } catch (err) {
-      await trx.rollback();
+      throw new Error(err);
+    }
+  }
+
+  async findById(id: number): Promise<User> {
+    try {
+      const user = await db('users').where('id', id);
+      return user[0];
+    } catch (err) {
       throw new Error(err);
     }
   }

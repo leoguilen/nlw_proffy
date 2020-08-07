@@ -7,7 +7,7 @@ export class CreateUserUseCase {
     private userRepository: IUserRepository
   ) {}
 
-  async execute(data: ICreateUserDTO): Promise<void> {
+  async create(data: ICreateUserDTO): Promise<void> {
     const newUser = new User(data);
     await this.userRepository.save(newUser);
   }
