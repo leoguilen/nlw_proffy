@@ -1,16 +1,16 @@
 import express, { Request, Response } from 'express';
-import ClassesController from './controllers/ClassesController';
-import ConnectionsController from './controllers/ConnectionsController';
 
 import { createUserController } from './useCases/CreateUser';
 import { createClassController } from './useCases/CreateClass';
 import { listUsersController } from './useCases/ListUsers';
 import { listClassesController } from './useCases/ListClasses';
+import { createConnectionController } from './useCases/CreateConnection';
+import { listConnectionsController } from './useCases/ListConnections';
 
 const routes = express.Router();
 
-const classesController = new ClassesController();
-const connectionsController = new ConnectionsController();
+// const classesController = new ClassesController();
+// const connectionsController = new ConnectionsController();
 
 // Users
 routes.get('/users', (request: Request, response: Response) => {
@@ -34,10 +34,15 @@ routes.post('/classes', (request: Request, response: Response) => {
   return createClassController.handleCreate(request, response);
 });
 
-routes.get('/classes', classesController.index);
-routes.post('/classes', classesController.create);
+// Connections
+routes.get('/connections', (request: Request, response: Response) => {
+  return listConnectionsController.handleGetTotal(request, response);
+});
+routes.post('/connections', (request: Request, response: Response) => {
+  return createConnectionController.handleCreate(request, response);
+});
 
-routes.get('/connections', connectionsController.index);
-routes.post('/connections', connectionsController.create);
+// routes.get('/classes', classesController.index);
+// routes.post('/classes', classesController.create);
 
 export default routes;
