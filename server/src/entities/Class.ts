@@ -3,7 +3,7 @@ export class Class {
 
     public subject!: string;
     public cost!: number;
-    public UserId!: number;
+    public userId!: number;
 
     constructor(props: Omit<Class,'id'>) {
       Object.assign(this, props);
